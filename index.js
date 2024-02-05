@@ -8,7 +8,7 @@ const port = 3000;
 app.use(bodyParser.json());
 
 // Токен бота Telegram
-const botToken = '6769689712:AAHZEeL9MwkKuLTi22SSFOCWM-SKKfmNVyA';
+const botToken = 'YOUR_TELEGRAM_BOT_TOKEN';
 const bot = new TelegramBot(botToken, { polling: true });
 
 
@@ -21,7 +21,7 @@ app.post('/api/duplicateContact', (req, res) => {
     }
 
     // Название чата куда пересылаются контактные данные
-    const chatId = '@MirrorEcho'; 
+    const chatId = 'YOUR_TELEGRAM_CHAT_ID'; 
     const message = `Имя: ${name}\n Контакт: ${contact}`;
 
     bot.sendMessage(chatId, message)
