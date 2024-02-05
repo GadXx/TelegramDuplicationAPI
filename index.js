@@ -11,6 +11,9 @@ app.use(bodyParser.json());
 const botToken = 'YOUR_TELEGRAM_BOT_TOKEN';
 const bot = new TelegramBot(botToken, { polling: true });
 
+bot.on('message', (msg) => {
+    console.log(`Chat ID: ${msg.chat.id}`);
+});
 
 app.post('/api/duplicateContact', (req, res) => {
 
