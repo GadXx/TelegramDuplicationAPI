@@ -1,0 +1,48 @@
+openapi: 3.0.0
+info:
+  title: Telegram Bot API
+  version: 1.0.0
+  servers:
+    - url: http://localhost:3000/
+
+paths:
+  /api/duplicateContact:
+    post:
+      summary: Duplicate a contact and send it to a Telegram chat
+      tags:
+        - Duplicates
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The name of the contact to duplicate
+                contact:
+                  type: string
+                  description: The contact information to duplicate
+              example:
+                name: John Doe
+                contact: +1234567890
+      responses:
+        '200':
+          description: Successful duplication and message sent to Telegram
+          content:
+            application/json:
+              example:
+                success: true
+        '400':
+          description: Bad Request, missing name or contact
+          content:
+            application/json:
+              example:
+                error: 'Both name and contact are required.'
+        '500':
+          description: Internal Server Error, failed to send message to Telegram
+          content:
+            application/json:
+              example:
+                error: 'Internal server error'
