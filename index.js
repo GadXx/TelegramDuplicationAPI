@@ -1,11 +1,13 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import TelegramBot from 'node-telegram-bot-api';
+import cors from 'cors';
 
 const app = express();
 const port = 3000; 
 
 app.use(bodyParser.json());
+app.use(cors());
 
 // Токен бота Telegram
 const botToken = 'YOUR_TELEGRAM_BOT_TOKEN';
